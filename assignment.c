@@ -36,11 +36,46 @@ int main(int argc, char *argv[]) {
     }
     
     for (int i = 0; i < r; i++){
-        for (int j = 0; j < r; j++){
+        for (int j = 0; j < c; j++){
             printf("%d ", pMatrix[i * c + j]);
         }
         printf("\n");
     }
+
+    FILE *pFile = NULL;
+    pFile = fopen("matrix.txt", "w");
+
+    if (pFile == NULL) {
+        printf("Failed to open file %s\n", "'matrix.txt'");
+        return -1;
+    }
+
+    // fprintf(pFile, "%d\n", *pMatrix);
+    // printf("Write completed successfully\n");
+
+    for (int i = 0; i < r; i++){
+        for (int j = 0; j < c; j++){
+            if (j == c)
+            {
+                fprintf(pFile, "%d", pMatrix[i * c + j]);
+            }
+            else
+            {
+                fprintf(pFile, "%d ", pMatrix[i*c + j]);
+            }
+        }
+        if (i == r-1)
+            {
+                fprintf(pFile, "\r");
+            }
+        else
+            {
+                fprintf(pFile, "\n");
+            }
+    }
+    printf("Write completed successfully\n");
+
+    fclose(pFile);
 
     free(pMatrix);
     pMatrix = NULL;
