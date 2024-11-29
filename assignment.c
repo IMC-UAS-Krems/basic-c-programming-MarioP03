@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
 
     for (int i = 0; i < r; i++){
         for (int j = 0; j < c; j++){
-            if (j == c)
+            if (j == c-1)
             {
                 fprintf(pFile, "%d", pMatrix[i * c + j]);
             }
