@@ -28,18 +28,10 @@ int main(int argc, char *argv[]) {
 
     int* pMatrix = malloc((r * c) * sizeof(int)); 
     
-    printf("The matrix you created has %d rows and %d columns.\n", r, c);
 
     for (int i = 0; i < (r*c); i++) {
         int randn = minrand + rand() % (maxrand - minrand + 1);
         pMatrix[i] = randn;
-    }
-    
-    for (int i = 0; i < r; i++){
-        for (int j = 0; j < c; j++){
-            printf("%d ", pMatrix[i * c + j]);
-        }
-        printf("\n");
     }
 
     FILE *pFile = NULL;
@@ -49,9 +41,6 @@ int main(int argc, char *argv[]) {
         printf("Failed to open file %s\n", "'matrix.txt'");
         return -1;
     }
-
-    // fprintf(pFile, "%d\n", *pMatrix);
-    // printf("Write completed successfully\n");
 
     for (int i = 0; i < r; i++){
         for (int j = 0; j < c; j++){
