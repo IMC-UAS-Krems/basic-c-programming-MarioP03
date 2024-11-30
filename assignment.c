@@ -52,10 +52,21 @@ int main(int argc, char *argv[]) {
                 fprintf(pFile, "%d ", pMatrix[i*c + j]);
             }
         }
-        if (i < r-1)
+        if (i == r-1)
+            {
+                fprintf(pFile, "\r");
+            }
+        else 
             {
                 fprintf(pFile, "\n");
             }
+            /* Otherwise, if carriage return means no newline at end of file, just switch the original "if" statement with this code
+            if (i < r-1)
+            {
+                fprintf(pFile, "\n");
+            }
+            else{}
+            */
     }
     printf("Write completed successfully\n");
 
