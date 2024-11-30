@@ -13,17 +13,16 @@ int main(int argc, char *argv[]) {
     int maxrand = 100;
 
     // WRITE YOUR CODE HERE
-    int n = argc-1;
     if (argc != 3) {
-        printf("Incorrect usage. You provided %d arguments. The correct number of arguments is 2\n", n);
-        return 1; // so the program doesn't write 'Segmentation fault' for trying to continue with the rest of the code
+        printf("Incorrect usage. You provided %d arguments. The correct number of arguments is 2\n", argc-1);
+        return -1; // so the program doesn't write 'Segmentation fault' for trying to continue with the rest of the code
     }   
 
     int r = atoi(argv[1]);
     int c = atoi(argv[2]);
     if (r <= 0 || c <= 0) {
         printf("Incorrect usage. The parameters you provided are not positive integers\n");
-        return 1;
+        return -1;
     }
 
     int* pMatrix = malloc((r * c) * sizeof(int)); 
@@ -53,11 +52,7 @@ int main(int argc, char *argv[]) {
                 fprintf(pFile, "%d ", pMatrix[i*c + j]);
             }
         }
-        if (i == r-1)
-            {
-                fprintf(pFile, "\r");
-            }
-        else
+        if (i < r-1)
             {
                 fprintf(pFile, "\n");
             }
